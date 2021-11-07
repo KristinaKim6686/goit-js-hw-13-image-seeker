@@ -31,9 +31,6 @@ function onSearch(e) {
     if (imageApi.query==='') {
         onError()
     }
-  // if (data.length === 0) {
-  //   onError()
-  // }
 
     imageApi.resetPage();
     clearContainer();
