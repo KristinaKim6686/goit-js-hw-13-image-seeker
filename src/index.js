@@ -29,7 +29,7 @@ function onSearch(e) {
     imageApi.query = e.currentTarget.elements.query.value;
 
     if (imageApi.query==='') {
-        onError()
+       return onError()
     }
 
     imageApi.resetPage();
@@ -38,9 +38,11 @@ function onSearch(e) {
 }
 
 function fetchGallery() {
-    imageApi.fetchImages().then(hits => {
-        refs.galleryContainer.insertAdjacentHTML('beforeend',galleryItemsMarkup(hits))
-    })
+  imageApi.fetchImages().then(hits => {
+    refs.galleryContainer.insertAdjacentHTML('beforeend', galleryItemsMarkup(hits))
+  })
+  .catch (onError());
+  
 }
 
 function onError() {
