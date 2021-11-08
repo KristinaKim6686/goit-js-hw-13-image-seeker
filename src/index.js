@@ -5,6 +5,7 @@ import ImageApi from './templates/js/image-search';
 import  galleryItemsMarkup from './templates/card.hbs';
 import * as _ from 'lodash';
 import './templates/styles.css'
+import carrouselle  from "./templates/js/carrouselle";
 
 
 
@@ -41,6 +42,7 @@ function fetchGallery() {
   imageApi.fetchImages().then(hits => {
     refs.galleryContainer.insertAdjacentHTML('beforeend', galleryItemsMarkup(hits))
   })
+    .then(carrouselle())
   .catch (onError());
   
 }
@@ -80,4 +82,3 @@ function scroll() {
     block: "end",
   });
 }
-
