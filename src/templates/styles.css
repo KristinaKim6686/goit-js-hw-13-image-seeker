@@ -7,7 +7,9 @@ body {
   background-attachment: fixed;
 }
 img {
+  border-radius: 16px;
   max-width: 90vw;
+  width: 360px;
 }
 img:hover {
   transform: scale(1.03);
@@ -37,10 +39,10 @@ input {
   padding-left: 8px;
 }
 .searchBtn {
-  background-color: transparent;
   box-shadow: inset -2px 1px whitesmoke, -0.3em 0 0.4em white;
   background-color: transparent;
   color: white;
+  border: 1px white;
   height: 30px;
   border-radius: 18px;
   padding-left: 8px;
@@ -55,6 +57,7 @@ input {
   align-items: center;
 }
 .gallery {
+  padding-top: 30px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
@@ -62,7 +65,6 @@ input {
 .photo-card {
   position: relative;
   padding-bottom: 15px;
-  border-radius: 16px;
   overflow: hidden;
   margin-left: auto;
   margin-right: auto;
