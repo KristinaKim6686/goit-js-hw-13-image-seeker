@@ -1,17 +1,18 @@
 import * as PNotify from "@pnotify/core";
 import * as PNotifyMobile from "@pnotify/mobile";
 import "@pnotify/core/dist/BrightTheme.css";
-import ImageApi from './templates/js/image-search';
+import ImageApi from './js/imageApi';
 import  galleryItemsMarkup from './templates/card.hbs';
 import * as _ from 'lodash';
-import './templates/styles.css'
-import carrouselle  from "./templates/js/carrouselle";
+import './styles.css';
+import modal  from "./js/modal";
 
 
 
  const myStack = new PNotify.Stack({
   dir1: "up",
-});
+ });
+
 
 const loadMoreBtn = document.querySelector('[data-action="load-more"]');
 const refs={
@@ -26,32 +27,37 @@ refs.searchForm.addEventListener('submit', onSearch);
 // loadMoreBtn.addEventListener('click', onLoadMore);
 
 function onSearch(e) {
-    e.preventDefault();
-    imageApi.query = e.currentTarget.elements.query.value;
-
-    if (imageApi.query==='') {
-       return onError()
-    }
-
-    imageApi.resetPage();
-    clearContainer();
-    fetchGallery();
+  e.preventDefault();
+  imageApi.query = e.currentTarget.elements.query.value.trim();
+  
+  if (!imageApi.query) return onError();
+  clearContainer();
+  imageApi.resetPage();
+  fetchGallery();
+  
+  
+  
+  
 }
 
-function fetchGallery() {
+ function fetchGallery() {
   imageApi.fetchImages().then(hits => {
     refs.galleryContainer.insertAdjacentHTML('beforeend', galleryItemsMarkup(hits))
   })
-    .then(carrouselle())
+    .then(modal())
   .catch (onError());
   
 }
 
-function onError() {
-  return PNotify.notice({
-          text: "Please, enter a correct request!",
-          stack: myStack,
-          modules: new Map([...PNotify.defaultModules, [PNotifyMobile, {}]]),
+ function  onError() {
+
+  return  PNotify.notice({
+    text: "Please, enter a correct request!",
+    title: 'ERROR!',
+    stack: myStack,
+    destroy: true,
+    delay: 700,
+    modules: new Map([...PNotify.defaultModules, [PNotifyMobile, {}]]),
         });
 }
 
@@ -63,15 +69,17 @@ document.addEventListener('scroll', () => {
   };
 })
 
-function onLoadMore() {
+async function onLoadMore() {
   fetchGallery()
     scroll();
 };
 
 
 function clearContainer() {
+   myStack.close(true);
   refs.galleryContainer.innerHTML = "";
-  myStack.close(true);
+ 
+
 }
 
 function scroll() {

@@ -1,7 +1,7 @@
 body {
   color: white;
   background-color: rgb(61, 54, 11);
-  background-image: url('../images/pexels-photo-3144214.jpg');
+  background-image: url('./images/pexels-photo-3144214.jpg');
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -9,9 +9,13 @@ body {
     'Helvetica Neue', sans-serif;
 }
 img {
+  display: block;
   border-radius: 16px;
+  overflow: hidden;
   max-width: 90vw;
   width: 360px;
+  height: 250px;
+  object-fit: cover;
 }
 img:hover {
   transform: scale(1.03);
@@ -40,13 +44,18 @@ input {
   border-radius: 18px;
   padding-left: 8px;
 }
+/* .search__zone {
+  position: fixed;
+  z-index: 2;
+} */
 .searchBtn {
   box-shadow: inset -2px 1px whitesmoke, -0.3em 0 0.4em white;
+  border-radius: 18px;
   background-color: transparent;
   color: white;
   border: 1px white;
   height: 30px;
-  border-radius: 18px;
+
   padding-left: 8px;
 }
 .container {
@@ -59,7 +68,6 @@ input {
   align-items: center;
 }
 .gallery {
-  padding-top: 30px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
@@ -67,6 +75,7 @@ input {
 .photo-card {
   position: relative;
   padding-bottom: 15px;
+  border-radius: 16px;
   overflow: hidden;
   margin-left: auto;
   margin-right: auto;
@@ -83,6 +92,7 @@ input {
 
 /* modal */
 .lightbox {
+  z-index: 3;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -123,6 +133,8 @@ input {
   height: auto;
   max-height: 100vh;
   max-width: 100vw;
+  pointer-events: none;
+  border-radius: 18px;
 }
 
 .lightbox__button {
@@ -143,7 +155,7 @@ input {
   cursor: pointer;
   transition: background-color var(--animation-duration) var(--timing-function);
   outline: none;
-  background-image: url('../images/icon-close.svg');
+  background-image: url('./images/icon-close.svg');
   background-position: center;
   background-size: 60%;
   background-repeat: no-repeat;
