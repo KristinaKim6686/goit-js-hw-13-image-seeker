@@ -3,7 +3,7 @@ import * as PNotifyMobile from "@pnotify/mobile";
 import "@pnotify/core/dist/BrightTheme.css";
 import ImageApi from './js/imageApi';
 import  galleryItemsMarkup from './templates/card.hbs';
-import * as _ from 'lodash';
+import { throttle } from 'lodash';
 import './styles.css';
 import modal  from "./js/modal";
 
@@ -29,23 +29,22 @@ refs.searchForm.addEventListener('submit', onSearch);
 function onSearch(e) {
   e.preventDefault();
   imageApi.query = e.currentTarget.elements.query.value.trim();
-  
   if (!imageApi.query) return onError();
   clearContainer();
   imageApi.resetPage();
   fetchGallery();
-  
-  
-  
   
 }
 
  function fetchGallery() {
   imageApi.fetchImages().then(hits => {
     refs.galleryContainer.insertAdjacentHTML('beforeend', galleryItemsMarkup(hits))
+     
+  if (data.length <= 0) return onError();
   })
+    
     .then(modal())
-  .catch (onError());
+  .catch (onError);
   
 }
 
