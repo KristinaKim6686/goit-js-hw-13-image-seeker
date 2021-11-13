@@ -30,9 +30,8 @@ ul {
 h1 {
   font-size: 46px;
   font-weight: 100;
-  text-decoration: blink;
 }
-input {
+.search__input {
   font-size: inherit;
   color: inherit;
   outline: none;
@@ -44,10 +43,21 @@ input {
   border-radius: 18px;
   padding-left: 8px;
 }
-/* .search__zone {
+.search__input:hover {
+  background-color: rgba(214, 165, 31, 0.514);
+  box-shadow: none;
+  transition: background-color cubic-bezier(0.4, 0, 0.2, 1) 600ms;
+  transition: box-shadow cubic-bezier(0.4, 0, 0.2, 1) 600ms;
+}
+.search__zone {
   position: fixed;
+  top: 105px;
   z-index: 2;
-} */
+}
+.hidden {
+  opacity: 0;
+  transition: opacity cubic-bezier(0.4, 0, 0.2, 1) 600ms;
+}
 .searchBtn {
   box-shadow: inset -2px 1px whitesmoke, -0.3em 0 0.4em white;
   border-radius: 18px;
@@ -55,8 +65,13 @@ input {
   color: white;
   border: 1px white;
   height: 30px;
-
   padding-left: 8px;
+}
+.searchBtn:hover {
+  background-color: rgba(214, 165, 31, 0.514);
+  box-shadow: none;
+  transition: background-color cubic-bezier(0.4, 0, 0.2, 1) 600ms;
+  transition: box-shadow cubic-bezier(0.4, 0, 0.2, 1) 600ms;
 }
 .container {
   margin-left: auto;
@@ -67,11 +82,9 @@ input {
   flex-direction: column;
   align-items: center;
 }
-.load-more__marker {
-  width: 40px;
-  height: 40px;
-}
+
 .gallery {
+  padding-top: 30px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
@@ -107,7 +120,7 @@ input {
   height: 100vh;
   opacity: 0;
   pointer-events: none;
-  transition: opacity var(--animation-duration) var(--timing-function);
+  transition: opacity cubic-bezier(0.4, 0, 0.2, 1) 600ms;
 }
 .lightbox.is-open {
   opacity: 1;
@@ -124,7 +137,7 @@ input {
 
 .lightbox__content {
   transform: scale(0.95);
-  transition: transform var(--animation-duration) var(--timing-function);
+  transition: transform cubic-bezier(0.4, 0, 0.2, 1) 600ms;
 }
 
 .lightbox.is-open .lightbox__content {
@@ -157,7 +170,7 @@ input {
   background-color: transparent;
   color: #fff;
   cursor: pointer;
-  transition: background-color var(--animation-duration) var(--timing-function);
+  transition: background-color cubic-bezier(0.4, 0, 0.2, 1) 600ms;
   outline: none;
   background-image: url('./images/icon-close.svg');
   background-position: center;

@@ -39,44 +39,16 @@ export default function carrouselle() {
 
    
     document.addEventListener('keydown', e => {
-        // const galleryItems = target.classList.contains('.gallery__item');
-        // // const currentIndex = dataSource.indexOf(refs.galleryPreview.src)
-        // const currentIndex = galleryItems.findIndex(
-        //     (img) => img.original === lightBoxImage.src
-        // );
+        
         switch (event.code) {
             case 'Escape': {
                 onCloseModal();
                 break;
             }
-            //     case 'ArrowRight': {
-            //     rightClick(currentIndex)
-            // }
-            // case 'ArrowLeft': {
-            //     leftClick(currentIndex);
-            // }
+            
             
         }
     });
-    // function rightClick(currentIndex) {
-    //     let nextIndex = currentIndex - 1;
-    //     if (nextIndex === -1) {
-    //         nextIndex=dataSource.length-1
-    //     }
-       
-    // }
-    function rightClick(currentIndex) {
-        let nextIndex = currentIndex + 1;
-        if (nextIndex === -1) {
-            nextIndex += dataSource.length + 1;
-        }
-     refs.lightBoxImage.src = refs.galleryPreview[nextIndex].original;
-    }
-    function leftClick(currentIndex) {
-  let nextIndex = currentIndex - 1;
-  if (nextIndex === -1) {
-    nextIndex = refs.galleryPreviewImage.length - 1;
-  }
-  refs.lightBoxImage.src = refs.galleryPreview[nextIndex].original;
-};
+
+  
 }

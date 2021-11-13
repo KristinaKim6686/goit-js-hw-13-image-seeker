@@ -16,7 +16,7 @@ import modal  from "./js/modal";
 const refs={
     searchForm: document.querySelector('.search__form'),
     galleryContainer: document.querySelector('.gallery'),
-
+    searchZone:document.querySelector('.search__zone')
 }
 
 const imageApi = new ImageApi();
@@ -58,7 +58,8 @@ function onSearch(e) {
 }
 
 document.addEventListener('scroll', throttle(() => {
-  const documentRect=document.documentElement.getBoundingClientRect()
+  const documentRect = document.documentElement.getBoundingClientRect()
+  // refs.searchZone.classList.add('hidden');
   if (documentRect.bottom < document.documentElement.clientHeight + 150) {
     onLoadMore();
   }
@@ -78,8 +79,7 @@ function clearContainer() {
 }
 
 function scroll() {
-  let lastLiItem = document.querySelectorAll(".list-item");
-
+  let lastLiItem = document.querySelectorAll(".load-more__marker");
   lastLiItem[lastLiItem.length - (imageApi.perPage - 1)].scrollIntoView({
     behavior: "smooth",
     block: "end",
