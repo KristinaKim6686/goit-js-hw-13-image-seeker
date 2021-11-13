@@ -13,7 +13,8 @@ import modal  from "./js/modal";
   dir1: "up",
  });
 
-const refs={
+const refs = {
+    lastItem :document.querySelectorAll(".load-more__marker"),
     searchForm: document.querySelector('.search__form'),
     galleryContainer: document.querySelector('.gallery'),
     searchZone:document.querySelector('.search__zone')
@@ -34,11 +35,13 @@ function onSearch(e) {
 }
 
  function fetchGallery() {
-  imageApi.fetchImages().then(hits => {
-    refs.galleryContainer.insertAdjacentHTML('beforeend', galleryItemsMarkup(hits))
+   imageApi.fetchImages().then(hits => {
+     refs.galleryContainer.insertAdjacentHTML('beforeend', galleryItemsMarkup(hits))
      
-    if (data.length <= 0) return onError();
-  })
+     if (data.length <= 0) return onError();
+     if (data.length <= 12) return;
+   }
+  )
     .then(modal())
   .catch (onError);
 }
@@ -78,9 +81,8 @@ function clearContainer() {
 
 }
 
-function scroll() {
-  let lastLiItem = document.querySelectorAll(".load-more__marker");
-  lastLiItem[lastLiItem.length - (imageApi.perPage - 1)].scrollIntoView({
+function scroll() {  
+  refs.lastItem.scrollIntoView({
     behavior: "smooth",
     block: "end",
   });
