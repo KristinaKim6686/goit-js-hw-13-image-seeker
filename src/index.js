@@ -13,8 +13,6 @@ import modal  from "./js/modal";
   dir1: "up",
  });
 
-
-const loadMoreBtn = document.querySelector('[data-action="load-more"]');
 const refs={
     searchForm: document.querySelector('.search__form'),
     galleryContainer: document.querySelector('.gallery'),
@@ -24,7 +22,6 @@ const refs={
 const imageApi = new ImageApi();
 
 refs.searchForm.addEventListener('submit', onSearch);
-// loadMoreBtn.addEventListener('click', onLoadMore);
 
 function onSearch(e) {
   e.preventDefault();
@@ -40,35 +37,34 @@ function onSearch(e) {
   imageApi.fetchImages().then(hits => {
     refs.galleryContainer.insertAdjacentHTML('beforeend', galleryItemsMarkup(hits))
      
-  if (data.length <= 0) return onError();
+    if (data.length <= 0) return onError();
   })
-    
     .then(modal())
   .catch (onError);
-  
 }
 
  function  onError() {
-
   return  PNotify.notice({
     text: "Please, enter a correct request!",
     title: 'ERROR!',
     stack: myStack,
-    destroy: true,
-    delay: 700,
+     closer: false,
+            sticker: false,
+            hide: true,
+            delay: 500,
+            remove: true,
     modules: new Map([...PNotify.defaultModules, [PNotifyMobile, {}]]),
         });
 }
 
-document.addEventListener('scroll', () => {
+document.addEventListener('scroll', throttle(() => {
   const documentRect=document.documentElement.getBoundingClientRect()
-  console.log('bottom');
   if (documentRect.bottom < document.documentElement.clientHeight + 150) {
-    onLoadMore()
-  };
-})
+    onLoadMore();
+  }
+},500))
 
-async function onLoadMore() {
+ function onLoadMore() {
   fetchGallery()
     scroll();
 };
