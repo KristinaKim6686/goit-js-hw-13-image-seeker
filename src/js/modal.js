@@ -1,5 +1,5 @@
 export default function carrouselle() {
-    const dataSource = [];
+    const dataSources = [];
 
     const refs = {
         modalLightbox: document.querySelector('.js-lightbox'),
@@ -49,6 +49,6 @@ export default function carrouselle() {
             
         }
     });
-
-  
+    
+    
 }

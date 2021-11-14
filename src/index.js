@@ -5,22 +5,35 @@ import ImageApi from './js/imageApi';
 import  galleryItemsMarkup from './templates/card.hbs';
 import { throttle } from 'lodash';
 import './styles.css';
-import modal  from "./js/modal";
+import modal from "./js/modal";
 
 
+// import SimpleLightbox from "simplelightbox";
+// import simpleLightbox from "simplelightbox";
+
+// var lightbox = new SimpleLightbox('.gallery a', {
+//   overlay: true,
+//   spinner: true,
+//   nav: true,
+//   navText: ['←', '→'],
+//   close: false,
+  
+//   });
 
  const myStack = new PNotify.Stack({
   dir1: "up",
  });
 
 const refs = {
-    lastItem :document.querySelectorAll(".load-more__marker"),
+    lastItem :document.querySelector(".load-more__marker"),
     searchForm: document.querySelector('.search__form'),
     galleryContainer: document.querySelector('.gallery'),
     searchZone:document.querySelector('.search__zone')
 }
 
 const imageApi = new ImageApi();
+
+
 
 refs.searchForm.addEventListener('submit', onSearch);
 
@@ -81,7 +94,7 @@ function clearContainer() {
 
 }
 
-function scroll() {  
+function scroll() {
   refs.lastItem.scrollIntoView({
     behavior: "smooth",
     block: "end",
