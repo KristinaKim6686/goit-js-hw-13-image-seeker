@@ -1,5 +1,11 @@
+// import * as basicLightbox from 'basiclightbox';
+import SimpleLightbox from "simplelightbox";
 export default function carrouselle() {
-    const dataSources = [];
+
+    // const basicLightbox = require('basiclightbox');
+    
+
+
 
     const refs = {
         modalLightbox: document.querySelector('.js-lightbox'),
@@ -11,7 +17,7 @@ export default function carrouselle() {
 
     refs.galleryPreview.addEventListener('click', onOpenModal);
     refs.closeButton.addEventListener('click', onCloseModal);
-    refs.lightboxOverlay.addEventListener('click', onBackdropClick);
+    // refs.lightboxOverlay.addEventListener('click', onBackdropClick);
 
     
     function onOpenModal(event) {
@@ -19,36 +25,24 @@ export default function carrouselle() {
         if (event.target.nodeName !== 'IMG') {
             return;
         }
-        refs.modalLightbox.classList.add('is-open');
+        let gallery = new SimpleLightbox('.gallery a');
+gallery.on('show.simplelightbox', function () {
+	
+});
 
-        refs.lightBoxImage.src = event.target.dataset.source;
-        // console.log(refs.lightBoxImage.src);
-    };
-
-    function onCloseModal() {
-        refs.modalLightbox.classList.remove('is-open');
-        refs.modalLightbox.setAttribute('src', '');
-        // refs.modalLightbox.removeAttribute('src');
-    }
-    
-    function onBackdropClick(event) {
-        if (event.currentTarget === event.target) {
-            onCloseModal();
-        }
-    };
-
-   
-    document.addEventListener('keydown', e => {
         
-        switch (event.code) {
-            case 'Escape': {
-                onCloseModal();
-                break;
-            }
-            
-            
-        }
-    });
-    
+//         const instance = basicLightbox.create(`
+//     <div class="modal">
+//        <img width="1200" height="800" src="${refs.lightBoxImage.src}">
+//     </div>
+// `)
+//         instance.show();
+//         refs.lightBoxImage.src = event.target.dataset.source;
+        
+    };
+    function onCloseModal() {
+        // instance.close()
+    }
+
     
 }

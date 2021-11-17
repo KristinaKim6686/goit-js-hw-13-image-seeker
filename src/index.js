@@ -8,18 +8,6 @@ import './styles.css';
 import modal from "./js/modal";
 
 
-// import SimpleLightbox from "simplelightbox";
-// import simpleLightbox from "simplelightbox";
-
-// var lightbox = new SimpleLightbox('.gallery a', {
-//   overlay: true,
-//   spinner: true,
-//   nav: true,
-//   navText: ['←', '→'],
-//   close: false,
-  
-//   });
-
  const myStack = new PNotify.Stack({
   dir1: "up",
  });
@@ -90,8 +78,6 @@ document.addEventListener('scroll', throttle(() => {
 function clearContainer() {
    myStack.close(true);
   refs.galleryContainer.innerHTML = "";
- 
-
 }
 
 function scroll() {

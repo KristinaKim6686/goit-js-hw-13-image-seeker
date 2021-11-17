@@ -13,10 +13,10 @@ img {
   border-radius: 16px;
   overflow: hidden;
   max-width: 90vw;
-  width: 360px;
-  height: 250px;
   object-fit: cover;
 }
+/* .list-item 
+} */
 img:hover {
   transform: scale(1.03);
   transition: transform cubic-bezier(0.4, 0, 0.2, 1) 600ms;
@@ -97,11 +97,14 @@ h1 {
   overflow: hidden;
   margin-left: auto;
   margin-right: auto;
+  width: 360px;
+  height: 250px;
+  margin-bottom: 10px;
 }
 
 .stats {
   position: absolute;
-  bottom: 10px;
+  bottom: 0;
   left: 0;
   right: 0;
   justify-content: space-evenly;
@@ -109,77 +112,3 @@ h1 {
 }
 
 /* modal */
-.lightbox {
-  z-index: 3;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity cubic-bezier(0.4, 0, 0.2, 1) 600ms;
-}
-.lightbox.is-open {
-  opacity: 1;
-  pointer-events: initial;
-}
-.lightbox__overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.8);
-}
-
-.lightbox__content {
-  transform: scale(0.95);
-  transition: transform cubic-bezier(0.4, 0, 0.2, 1) 600ms;
-}
-
-.lightbox.is-open .lightbox__content {
-  transform: scale(1);
-}
-
-.lightbox__image {
-  display: block;
-  width: auto;
-  height: auto;
-  max-height: 100vh;
-  max-width: 100vw;
-  pointer-events: none;
-  border-radius: 18px;
-}
-
-.lightbox__button {
-  position: absolute;
-  top: 8px;
-  right: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 48px;
-  height: 48px;
-  padding: 0;
-  margin: 0;
-  border: none;
-  border-radius: 50%;
-  background-color: transparent;
-  color: #fff;
-  cursor: pointer;
-  transition: background-color cubic-bezier(0.4, 0, 0.2, 1) 600ms;
-  outline: none;
-  background-image: url('./images/icon-close.svg');
-  background-position: center;
-  background-size: 60%;
-  background-repeat: no-repeat;
-}
-
-.lightbox__button:hover,
-.lightbox__button:focus {
-  background-color: rgba(0, 0, 0, 0.5);
-}
