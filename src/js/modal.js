@@ -16,7 +16,7 @@ export default function carrouselle() {
     };
 
     refs.galleryPreview.addEventListener('click', onOpenModal);
-    refs.closeButton.addEventListener('click', onCloseModal);
+    // refs.closeButton.addEventListener('click', onCloseModal);
     // refs.lightboxOverlay.addEventListener('click', onBackdropClick);
 
     
@@ -27,7 +27,9 @@ export default function carrouselle() {
         }
         let gallery = new SimpleLightbox('.gallery a');
 gallery.on('show.simplelightbox', function () {
-	
+    disableScroll: false;
+    loop: false;
+    
 });
 
         
@@ -40,9 +42,9 @@ gallery.on('show.simplelightbox', function () {
 //         refs.lightBoxImage.src = event.target.dataset.source;
         
     };
-    function onCloseModal() {
+    // function onCloseModal() {
         // instance.close()
-    }
+    // }
 
     
 }
